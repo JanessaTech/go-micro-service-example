@@ -4,9 +4,9 @@ import (
 	"time"
 
 	"go.uber.org/zap"
-	"go.uber.org/zap/zapcore"
 )
 
+// we use logger.Sugar() if the performance is not critical
 func performanceNotsentive() {
 	logger, _ := zap.NewProduction()
 	//logger, _ := zap.NewDevelopment()
@@ -23,6 +23,7 @@ func performanceNotsentive() {
 	sugarLogger.Debugln("this is debug info")
 }
 
+// we use logger directly if the performance is critical
 func performanceSentive() {
 	logger, _ := zap.NewProduction()
 	defer logger.Sync()
@@ -34,28 +35,14 @@ func performanceSentive() {
 	)
 }
 
+// don't output anything. This is for something going wrong when we create zap.Logger
 func noOp() {
 	logger := zap.NewNop()
 	defer logger.Sync()
 	logger.Info("My name", zap.String("name", "Zhao juan")) // no output
 }
 
-func buildLoggerFromCfg() *zap.SugaredLogger {
-	cfg := zap.Config{
-		Encoding:         "console",
-		Level:            zap.NewAtomicLevelAt(zapcore.InfoLevel),
-		Development:      true,
-		OutputPaths:      []string{"stdout"},
-		ErrorOutputPaths: []string{"stderr"},
-	}
-	logger, err := cfg.Build()
-	if err != nil {
-		logger = zap.NewNop()
-	}
-	return logger.Sugar()
-}
-
-// it has some problems: some extral info cannot be printed out
+// we use a variable isDevMode to decide which type of logger we will create: for development or for production
 func runCustomLogger(isDevMode bool) {
 	logger, _ := zap.NewProduction()
 	if isDevMode {
