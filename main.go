@@ -1,10 +1,13 @@
 package main
 
-import diveincobra "hi-supergirl/go-micro-service-example/dive-in-cobra"
+import (
+	divekoanf "hi-supergirl/go-micro-service-example/dive-koanf"
+)
 
 func main() {
 	//gingetstarted.GinSampleRestfulDemo()
 	//divegin.RouteGroup_InOneFile()
 	//divegin.RouteGroup_InDifferentFile()
-	diveincobra.GetStartCobra()
+	//diveincobra.GetStartCobra()
+	divekoanf.Main()
 }

@@ -1,0 +1,21 @@
+{
+    "server": {
+        "port" : 8080,
+        "readTimeout" : "5s"
+    },
+    "logging" : {
+        "level": -1
+    },
+    "db": {
+        "dataSourceName" : "test",
+        "migrate" : {
+            "enable" : false
+        }
+    },
+    "cache": {
+        "enabled" : false,
+        "redis" : {
+            "cluster" : false
+        }
+    }
+}

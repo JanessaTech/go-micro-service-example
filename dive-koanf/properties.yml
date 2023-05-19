@@ -1,0 +1,13 @@
+cache:
+    enabled: false,
+    redis:
+        cluster: false
+db:
+    dataSourceName: test
+    migrate:
+        enable: false,
+logging:
+    level: -1,
+server:
+    port: 8080,
+    readTimeout: 5s
