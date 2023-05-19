@@ -1,7 +1,7 @@
 package main
 
 import (
-	divekoanf "hi-supergirl/go-micro-service-example/dive-koanf"
+	divezapsugaredlogger "hi-supergirl/go-micro-service-example/dive-zapSugaredLogger"
 )
 
 func main() {
@@ -9,5 +9,6 @@ func main() {
 	//divegin.RouteGroup_InOneFile()
 	//divegin.RouteGroup_InDifferentFile()
 	//diveincobra.GetStartCobra()
-	divekoanf.Main()
+	//divekoanf.Main()
+	divezapsugaredlogger.Main()
 }
