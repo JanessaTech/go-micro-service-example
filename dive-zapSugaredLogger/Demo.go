@@ -61,10 +61,31 @@ func runCustomLogger(isDevMode bool) {
 	sugarLogger.Debugln("this is debug info")
 }
 
+// add lable to sugarLogger
+func runCustomLoggerWith(isDevMode bool) {
+	logger, _ := zap.NewProduction()
+	if isDevMode {
+		logger, _ = zap.NewDevelopment()
+	}
+	defer logger.Sync()
+	sugarLogger := logger.Sugar()
+	sugarLogger = sugarLogger.With("requestId", "0000000000000000000")
+
+	sugarLogger.Infow("failed to fetch URL",
+		// Structured context as loosely typed key-value pairs.
+		"url", "www.google.com",
+		"attempt", 3,
+		"backoff", time.Second,
+	)
+	sugarLogger.Infof("Failed to fetch URL: %s", "www.google.com")
+	sugarLogger.Debugln("this is debug info")
+}
+
 func Main() {
 	//performanceNotsentive()
 	//performanceSentive()
 	//noOp()
 	//runCustomLogger(true)
-	runCustomLogger(false)
+	//runCustomLogger(false)
+	runCustomLoggerWith(true)
 }
