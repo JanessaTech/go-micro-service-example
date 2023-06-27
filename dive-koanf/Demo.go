@@ -104,8 +104,8 @@ func loadFromBytes() (*Config, error) {
 func Main() {
 
 	loadFromJsonFile()
-	loadFromYmlFile()
-	loadFromMemory()
-	loadFromEnv()
-	loadFromBytes()
+	//loadFromYmlFile()
+	//loadFromMemory()
+	//loadFromEnv()
+	//loadFromBytes()
 }

@@ -48,6 +48,11 @@ type Config struct {
 	DBConfig      DBConfig      `json:"db"`
 	CacheConfig   CacheConfig   `json:"cache"`
 	MetricsConfig MetricsConfig `json:"metrics"`
+	Accounts      []struct {
+		Name    string `json:"name"`
+		Key     string `json:"key"`
+		Address string `json:"address"`
+	} `json:"accounts"`
 }
 
 type ServerConfig struct {
